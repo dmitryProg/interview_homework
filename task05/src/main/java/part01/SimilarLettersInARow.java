@@ -2,27 +2,30 @@ package main.java.part1;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.HashSet;
-import java.util.Set;
 
-public class DifferentLetters {
+public class SimilarLettersInARow {
     public static void main(String[] args) {
         String wordNew = "";
+        int counter = 0;
         System.out.println("Enter your word:");
-        Set<Character> set = new HashSet();
-
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             wordNew = reader.readLine();
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             e.printStackTrace();
             System.err.println("Exception e!");
         }
 
-        for (int i = 0; i < wordNew.length(); i++) {
-            if (!Character.isDigit(wordNew.charAt(i))) {
-                set.add(wordNew.charAt(i));
+        for (int i = 0; i <  wordNew.length(); i++) {
+            if (i !=  0) {
+                if ( wordNew.charAt(i - 1) ==  wordNew.charAt(i)) {
+                    counter ++;
+                }
+            }
+            else if ( wordNew.charAt(i ) ==  wordNew.charAt(i + 1)) {
+                counter ++;
             }
         }
-        System.out.println(set.size());
+        System.out.println(counter);
     }
 }
