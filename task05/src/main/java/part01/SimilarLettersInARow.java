@@ -10,20 +10,17 @@ public class SimilarLettersInARow {
         System.out.println("Enter your word:");
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             wordNew = reader.readLine();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            System.err.println("Exception e!");
         }
 
-        for (int i = 0; i <  wordNew.length(); i++) {
-            if (i !=  0) {
-                if ( wordNew.charAt(i - 1) ==  wordNew.charAt(i)) {
-                    counter ++;
+        for (int i = 0; i < wordNew.length(); i++) {
+            if (i != 0) {
+                if (wordNew.charAt(i - 1) == wordNew.charAt(i)) {
+                    counter++;
                 }
-            }
-            else if ( wordNew.charAt(i ) ==  wordNew.charAt(i + 1)) {
-                counter ++;
+            } else if (wordNew.charAt(i) == wordNew.charAt(i + 1)) {
+                counter++;
             }
         }
         System.out.println(counter);
