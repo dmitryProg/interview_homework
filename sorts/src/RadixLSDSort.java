@@ -1,22 +1,13 @@
-package main.java;
-
 import java.util.Arrays;
-import java.util.Random;
 
 public class RadixLSDSort {
     public static void main(String[] args) {
-        int[] array = new int[100];
+        int[] array = UtilitsForSorts.createArray();
 
-        for (int i = 0; i < 100; i++) {
-            Random myRnd = new Random();
-            array[i] = myRnd.nextInt(1000);
-        }
-        RadixLSDSort radixLSDSort = new RadixLSDSort();
-        array = radixLSDSort.doRadixLSDSort(array);
-        radixLSDSort.printArray(array);
+        UtilitsForSorts.printArray(doRadixLSDSort(array));
     }
 
-    public int[] doRadixLSDSort(int[] array) {
+    private static int[] doRadixLSDSort(int[] array) {
         int maxValue = getMaxInArray(array);
         for (int exp = 1; (maxValue / exp) > 0; exp *= 10) {
             countSort(array, exp);
@@ -24,7 +15,7 @@ public class RadixLSDSort {
         return array;
     }
 
-    public void countSort(int[] array, int exp) {
+    private static void countSort(int[] array, int exp) {
         int[] outputArray = new int[array.length];
         int[] count = new int[10];
         Arrays.fill(count, 0);
@@ -44,7 +35,7 @@ public class RadixLSDSort {
         }
     }
 
-    public int getMaxInArray(int[] array) {
+    private static int getMaxInArray(int[] array) {
         int max = array[0];
         for (int i = 1; i < array.length; i++) {
             if (array[i] > max) {
@@ -52,11 +43,5 @@ public class RadixLSDSort {
             }
         }
         return max;
-    }
-
-    public void printArray(int[] array) {
-        for (int i = 0; i < array.length; i++) {
-            System.out.println(array[i]);
-        }
     }
 }

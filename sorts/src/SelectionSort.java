@@ -1,21 +1,11 @@
-package main.java;
-
-import java.util.Random;
-
 public class SelectionSort {
     public static void main(String[] args) {
-        int[] array = new int[100];
+        int[] array = UtilitsForSorts.createArray();
 
-        for (int i = 0; i < 100; i++) {
-            Random myRnd = new Random();
-            array[i] = myRnd.nextInt(1000);
-        }
-        SelectionSort selectionSort = new SelectionSort();
-        array = selectionSort.doSelectionSort(array);
-        selectionSort.printArray(array);
+        UtilitsForSorts.printArray(doSelectionSort(array));
     }
 
-    public int[] doSelectionSort(int[] array) {
+    private static int[] doSelectionSort(int[] array) {
         int temp;
         for (int i = 1; i < array.length; i++) {
             int minValIndex = i;
@@ -28,11 +18,5 @@ public class SelectionSort {
             array[minValIndex] = temp;
         }
         return array;
-    }
-
-    public void printArray(int[] array) {
-        for (int i = 0; i < array.length; i++) {
-            System.out.println(array[i]);
-        }
     }
 }
